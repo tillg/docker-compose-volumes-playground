@@ -1,0 +1,24 @@
+version: '3'
+services:
+  service1:
+    image: nginx
+    container_name: service1
+    ports:
+      - '81:80'
+    volumes:
+      - content:/usr/share/nginx/html
+
+  service2:
+    image: nginx
+    container_name: service2
+    ports:
+      - '82:80'
+    volumes:
+      - content:/usr/share/nginx/html
+
+volumes:
+  content:
+     driver_opts:
+           type: none
+           device: ./data/content 
+           o: bind
